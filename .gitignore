@@ -6,3 +6,6 @@
 .DS_Store
 /build
 /captures
+/app/src/main/java/com/example/gleb/mediumme/api/BuildApiConfig.kt
+app/libs/
+app/src/main/res/drawable/
