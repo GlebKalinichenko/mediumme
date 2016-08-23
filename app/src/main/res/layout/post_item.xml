@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/post_image"
+        style="@style/PostItemFragment.PostImage"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        style="@style/PostItemFragment.ContainerLayout">
+
+        <TextView
+            android:text="Gleb Kalinichenko"
+            android:id="@+id/text_author"
+            style="@style/PostItemFragment.AuthorText"/>
+
+        <TextView
+            android:text="TIL Prosecutors tried to put wrongfully convicted Juan Rivera back in prison for murder"
+            android:id="@+id/text_title"
+            style="@style/PostItemFragment.TitleText"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -8,4 +8,41 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="PostItemFragment"></style>
+
+    <style name="PostItemFragment.PostImage">
+        <item name="android:layout_width">@dimen/size_image_post</item>
+        <item name="android:layout_height">@dimen/size_image_post</item>
+        <item name="android:src">@drawable/image</item>
+        <item name="app:civ_border_width">@dimen/border_width_image_post</item>
+        <item name="app:civ_border_color">@color/color_border_image_post</item>
+        <item name="android:layout_marginLeft">@dimen/margin_image_post</item>
+        <item name="android:layout_marginBottom">@dimen/margin_image_post</item>
+        <item name="android:layout_marginTop">@dimen/margin_image_post</item>
+
+    </style>
+
+    <style name="PostItemFragment.ContainerLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">20dp</item>
+
+    </style>
+
+    <style name="PostItemFragment.AuthorText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/color_text_author</item>
+    </style>
+
+    <style name="PostItemFragment.TitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_text_title</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/color_text_title</item>
+        <item name="android:layout_marginRight">@dimen/margin_right_text_title</item> />
+    </style>
+
 </resources>

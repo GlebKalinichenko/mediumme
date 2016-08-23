@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="color_border_image_post">#FF000000</color>
+    <color name="color_text_author">#212121</color>
+    <color name="color_text_title">#9E9E9E</color>
 </resources>
