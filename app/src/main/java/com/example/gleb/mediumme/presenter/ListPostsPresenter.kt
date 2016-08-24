@@ -23,8 +23,8 @@ data class ListPostsPresenter (val view: IListPostsView) : IListPostsPresenter {
             list.flatMap { i -> Observable.just(i.data) }.flatMap { i -> Observable.from(i.children) }
                 .flatMap { i -> Observable.just(i.data) }.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                 .reduce(listOf<PostEntityResponse>(), { arr, b -> arr.plus(b)} )
-                    .subscribe { i -> i.forEach { v -> Log.d(LOG_TAG + "Title", v.author)
-                        view.displayListPosts(i) } }
+                    .subscribe { i -> i.forEach { v -> Log.d(LOG_TAG + "Title", v.author)}
+                        view.displayListPosts(i) }
         }
 
         receivePosts(list)

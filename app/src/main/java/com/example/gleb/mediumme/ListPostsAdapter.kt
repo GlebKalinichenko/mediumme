@@ -1,0 +1,44 @@
+package com.example.gleb.mediumme
+
+import android.content.Context
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import com.example.gleb.mediumme.entities.PostEntityResponse
+
+class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Context): RecyclerView.Adapter<ListPostsAdapter.ViewHolder>() {
+    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+        holder!!.textAuthor!!.text = lists.get(position).author
+        holder!!.textTitle!!.text = lists.get(position).title
+        var url = lists.get(position).thumbnail
+//        ImageHelper.loadImage(context, holder.postImage, url)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+        val v: View = LayoutInflater.from(parent!!.context).inflate(R.layout.post_item, parent, false)
+        return ViewHolder(v)
+    }
+
+    override fun getItemCount(): Int {
+        return lists.size
+    }
+
+    class ViewHolder (var view: View) : RecyclerView.ViewHolder(view) {
+        var textAuthor: TextView? = null
+        var textTitle: TextView? = null
+//        var postImage: ImageView? = null
+
+        init {
+            this.view = view
+            textAuthor = view.findViewById(R.id.text_author) as TextView
+            textTitle = view.findViewById(R.id.text_title) as TextView
+//            postImage = view.findViewById(R.id.post_image) as ImageView
+        }
+
+    }
+
+
+}

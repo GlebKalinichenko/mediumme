@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/post_image"
-        style="@style/PostItemFragment.PostImage"/>
+        style="@style/PostItemFragment.PostImage"
+        app:civ_border_width="@dimen/border_width_image_post"
+        app:civ_border_color="@color/color_border_image_post"/>
 
     <LinearLayout
         android:orientation="vertical"
