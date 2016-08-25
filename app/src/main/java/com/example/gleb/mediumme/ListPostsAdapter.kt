@@ -14,7 +14,8 @@ class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Contex
         holder!!.textAuthor!!.text = lists.get(position).author
         holder!!.textTitle!!.text = lists.get(position).title
         var url = lists.get(position).thumbnail
-//        ImageHelper.loadImage(context, holder.postImage, url)
+        if (!url.equals(""))
+            ImageHelper.loadImage(context, holder.postImage, url)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
@@ -26,19 +27,20 @@ class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Contex
         return lists.size
     }
 
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView?) {
+        super.onAttachedToRecyclerView(recyclerView)
+    }
+
     class ViewHolder (var view: View) : RecyclerView.ViewHolder(view) {
         var textAuthor: TextView? = null
         var textTitle: TextView? = null
-//        var postImage: ImageView? = null
+        var postImage: ImageView? = null
 
         init {
             this.view = view
             textAuthor = view.findViewById(R.id.text_author) as TextView
             textTitle = view.findViewById(R.id.text_title) as TextView
-//            postImage = view.findViewById(R.id.post_image) as ImageView
+            postImage = view.findViewById(R.id.post_image) as ImageView
         }
-
     }
-
-
 }
