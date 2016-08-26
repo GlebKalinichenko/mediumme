@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mediumme</string>
+    <string name="write_post">Write post</string>
 </resources>
