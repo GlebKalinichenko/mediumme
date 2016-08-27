@@ -13,10 +13,13 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.example.gleb.mediumme.entities.PostEntityResponse
+import com.example.gleb.mediumme.event.ImageClickedEvent
 import com.example.gleb.mediumme.helper.FragmentHelper
 import com.example.gleb.mediumme.presenter.IListPostsPresenter
 import com.example.gleb.mediumme.presenter.ListPostsPresenter
 import com.example.gleb.mediumme.view.IListPostsView
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 class PostFragment: BaseFragment(), IListPostsView {
     val LOG_TAG = this.javaClass.canonicalName
@@ -56,8 +59,9 @@ class PostFragment: BaseFragment(), IListPostsView {
     }
 
     override fun displayListPosts(list: List<PostEntityResponse>) {
-        adapter = ListPostsAdapter(list, context, this)
+        adapter = ListPostsAdapter(list, context)
         postList!!.adapter = adapter
+        EventBus().register(this)
     }
 
     fun openItemPost() {
@@ -65,7 +69,9 @@ class PostFragment: BaseFragment(), IListPostsView {
         FragmentHelper.reloadFragment(activity, R.id.layout_container, fragment)
     }
 
-    override fun OnItemClick(item: PostEntityResponse) {
-        Log.d(LOG_TAG, "Post image was clicked with author ${item.author}")
+    /*Use event instead callback for clicked on post image*/
+    @Subscribe
+    fun onEvent(event: ImageClickedEvent){
+        Log.d(LOG_TAG, "Post image was clicked with author ${event.item.author}")
     }
 }

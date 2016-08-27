@@ -37,6 +37,8 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support:recyclerview-v7:21.0.+'
     compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
+    compile 'org.greenrobot:eventbus:3.0.0'
+
 }
 buildscript {
     ext.kotlin_version = '1.0.3'

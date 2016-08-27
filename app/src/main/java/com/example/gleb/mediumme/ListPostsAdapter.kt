@@ -9,18 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.gleb.mediumme.entities.PostEntityResponse
 import com.example.gleb.mediumme.helper.ImageHelper
-import com.example.gleb.mediumme.view.PostImageItemClick
+import org.greenrobot.eventbus.EventBus
 
-class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Context, val imageListener: PostImageItemClick): RecyclerView.Adapter<ListPostsAdapter.ViewHolder>() {
+class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Context): RecyclerView.Adapter<ListPostsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         holder!!.textAuthor!!.text = lists.get(position).author
         holder!!.textTitle!!.text = lists.get(position).title
         var url = lists.get(position).thumbnail
         if (!url.equals("")) {
             ImageHelper.loadImage(context, holder.postImage, url)
-
-            var item = lists.get(position)
-            holder.postImage!!.setOnClickListener { imageListener.OnItemClick(item) }
+            initPostImageEvent(position)
         }
     }
 
@@ -35,6 +33,11 @@ class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Contex
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView?) {
         super.onAttachedToRecyclerView(recyclerView)
+    }
+
+    fun initPostImageEvent(position: Int){
+        var item = lists.get(position)
+        EventBus().post(item)
     }
 
     class ViewHolder (var view: View) : RecyclerView.ViewHolder(view) {
