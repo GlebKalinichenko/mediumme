@@ -2,6 +2,7 @@ package com.example.gleb.mediumme
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.gleb.mediumme.helper.FragmentHelper
 
 class MainActivity : AppCompatActivity() {
     val LOG_TAG: String = this.javaClass.canonicalName

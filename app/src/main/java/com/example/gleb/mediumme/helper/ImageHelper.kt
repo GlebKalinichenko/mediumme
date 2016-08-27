@@ -1,4 +1,4 @@
-package com.example.gleb.mediumme
+package com.example.gleb.mediumme.helper
 
 import android.content.Context
 import android.widget.ImageView

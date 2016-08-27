@@ -6,15 +6,20 @@ import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.OnItemTouchListener
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.example.gleb.mediumme.entities.PostEntityResponse
+import com.example.gleb.mediumme.helper.FragmentHelper
 import com.example.gleb.mediumme.presenter.IListPostsPresenter
 import com.example.gleb.mediumme.presenter.ListPostsPresenter
 import com.example.gleb.mediumme.view.IListPostsView
 
 class PostFragment: BaseFragment(), IListPostsView {
+    val LOG_TAG = this.javaClass.canonicalName
     val presenter: IListPostsPresenter = ListPostsPresenter(this)
     var postList: RecyclerView? = null
     var adapter: ListPostsAdapter? = null
@@ -35,17 +40,32 @@ class PostFragment: BaseFragment(), IListPostsView {
         addButton = v.findViewById(R.id.fab) as FloatingActionButton?
         coordinateLayout = v.findViewById(R.id.main_content) as CoordinatorLayout?
 
-        addButton!!.setOnClickListener { i -> Snackbar.make(coordinateLayout, R.string.write_post, Snackbar.LENGTH_LONG).show() }
-
         val llm = LinearLayoutManager(context)
         llm.setOrientation(LinearLayoutManager.VERTICAL)
         postList!!.layoutManager = llm
+
+        initWidgetActions()
+
         //postList!!.setHasFixedSize(true)
         //postList!!.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
     }
 
+    override fun initWidgetActions() {
+        addButton!!.setOnClickListener { i -> Snackbar.make(coordinateLayout, R.string.write_post, Snackbar.LENGTH_LONG).show() }
+//        postList!!.addOnItemTouchListener(this)
+    }
+
     override fun displayListPosts(list: List<PostEntityResponse>) {
-        adapter = ListPostsAdapter(list, context)
+        adapter = ListPostsAdapter(list, context, this)
         postList!!.adapter = adapter
+    }
+
+    fun openItemPost() {
+        var fragment = PostItemFragment()
+        FragmentHelper.reloadFragment(activity, R.id.layout_container, fragment)
+    }
+
+    override fun OnItemClick(item: PostEntityResponse) {
+        Log.d(LOG_TAG, "Post image was clicked with author ${item.author}")
     }
 }

@@ -8,18 +8,24 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.gleb.mediumme.entities.PostEntityResponse
+import com.example.gleb.mediumme.helper.ImageHelper
+import com.example.gleb.mediumme.view.PostImageItemClick
 
-class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Context): RecyclerView.Adapter<ListPostsAdapter.ViewHolder>() {
+class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Context, val imageListener: PostImageItemClick): RecyclerView.Adapter<ListPostsAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         holder!!.textAuthor!!.text = lists.get(position).author
         holder!!.textTitle!!.text = lists.get(position).title
         var url = lists.get(position).thumbnail
-        if (!url.equals(""))
+        if (!url.equals("")) {
             ImageHelper.loadImage(context, holder.postImage, url)
+
+            var item = lists.get(position)
+            holder.postImage!!.setOnClickListener { imageListener.OnItemClick(item) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val v: View = LayoutInflater.from(parent!!.context).inflate(R.layout.post_item, parent, false)
+        val v: View = LayoutInflater.from(parent!!.context).inflate(R.layout.adapter_post_item, parent, false)
         return ViewHolder(v)
     }
 
