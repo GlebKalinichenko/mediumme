@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.gleb.mediumme.entities.PostEntityResponse
-import com.example.gleb.mediumme.helper.ImageHelper
+import com.squareup.picasso.Picasso
 import org.greenrobot.eventbus.EventBus
 
 class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Context): RecyclerView.Adapter<ListPostsAdapter.ViewHolder>() {
@@ -17,7 +17,8 @@ class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Contex
         holder!!.textTitle!!.text = lists.get(position).title
         var url = lists.get(position).thumbnail
         if (!url.equals("")) {
-            ImageHelper.loadImage(context, holder.postImage, url)
+            //ImageHelper.loadImage(context, holder.postImage, url)
+            holder.postImage!!.load(url)
             initPostImageEvent(position)
         }
     }
@@ -51,5 +52,9 @@ class ListPostsAdapter (var lists: List<PostEntityResponse>, val context: Contex
             textTitle = view.findViewById(R.id.text_title) as TextView
             postImage = view.findViewById(R.id.post_image) as ImageView
         }
+    }
+
+    fun ImageView.load(url: String){
+        Picasso.with(context).load(url).into(this)
     }
 }

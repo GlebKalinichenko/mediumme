@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.gleb.mediumme.entities.PostEntityResponse
 import com.example.gleb.mediumme.event.ImageClickedEvent
 import com.example.gleb.mediumme.helper.FragmentHelper
@@ -28,6 +29,7 @@ class PostFragment: BaseFragment(), IListPostsView {
     var adapter: ListPostsAdapter? = null
     var addButton: FloatingActionButton? = null
     var coordinateLayout: CoordinatorLayout? = null
+    var listEntities: List<PostEntityResponse>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         var v: View = inflater!!.inflate(R.layout.fragment_post_list, container, false)
@@ -54,19 +56,28 @@ class PostFragment: BaseFragment(), IListPostsView {
     }
 
     override fun initWidgetActions() {
+        val context = activity
         addButton!!.setOnClickListener { i -> Snackbar.make(coordinateLayout, R.string.write_post, Snackbar.LENGTH_LONG).show() }
-//        postList!!.addOnItemTouchListener(this)
+        val recyclerViewOnItemClickListener = RecyclerViewOnItemClickListener(context, this)
+        postList!!.addOnItemTouchListener(recyclerViewOnItemClickListener)
     }
 
     override fun displayListPosts(list: List<PostEntityResponse>) {
+        listEntities = list
         adapter = ListPostsAdapter(list, context)
         postList!!.adapter = adapter
         EventBus().register(this)
     }
 
-    fun openItemPost() {
-        var fragment = PostItemFragment()
+    fun openItemPost(entity: PostEntityResponse) {
+        var fragment = PostItemFragment.getInstance(entity)
         FragmentHelper.reloadFragment(activity, R.id.layout_container, fragment)
+    }
+
+    override fun onItemClick(v: View, position: Int) {
+        Log.d(LOG_TAG, "Clicked on position = $position")
+        var entity = listEntities!!.get(position)
+        openItemPost(entity)
     }
 
     /*Use event instead callback for clicked on post image*/

@@ -6,6 +6,6 @@ import org.greenrobot.eventbus.EventBus
 class PostApplication: Application(){
     override fun onCreate() {
         super.onCreate()
-        EventBus().register(this)
+//        EventBus().register(this)
     }
 }
