@@ -23,11 +23,16 @@ data class ListPostsPresenter (val view: IListPostsView) : IListPostsPresenter {
             list.flatMap { i -> Observable.just(i.data) }.flatMap { i -> Observable.from(i.children) }
                 .flatMap { i -> Observable.just(i.data) }.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                 .reduce(listOf<PostEntityResponse>(), { arr, b -> arr.plus(b)} )
-                    .subscribe { i -> i.forEach { v -> Log.d(LOG_TAG + "Title", v.author)}
+                    .subscribe { i -> i.forEach { v -> {Log.d(LOG_TAG + "Title", v.author); v.isNew = false}}
                         view.displayListPosts(i) }
         }
 
         receivePosts(list)
+    }
+
+    fun receiveNewPosts(posts: List<PostEntityResponse>) {
+            Observable.from(posts).filter { i -> i.isNew == true }.reduce(listOf<PostEntityResponse>(), {arr, b -> arr})
+                .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
     }
 
 

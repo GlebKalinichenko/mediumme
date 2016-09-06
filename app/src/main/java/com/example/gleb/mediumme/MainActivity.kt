@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initLoadFragment(){
-        var fragment: BaseFragment = PostFragment()
+        var fragment: BaseFragment = PostListFragment()
         FragmentHelper.loadFragment(this, R.id.layout_container, fragment)
     }
 }

@@ -1,5 +1,9 @@
 package com.example.gleb.mediumme
 
+import android.app.Notification
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
@@ -16,13 +20,15 @@ import android.widget.Toast
 import com.example.gleb.mediumme.entities.PostEntityResponse
 import com.example.gleb.mediumme.event.ImageClickedEvent
 import com.example.gleb.mediumme.helper.FragmentHelper
+import com.example.gleb.mediumme.helper.NotificationHelper
+import com.example.gleb.mediumme.helper.StringHelper
 import com.example.gleb.mediumme.presenter.IListPostsPresenter
 import com.example.gleb.mediumme.presenter.ListPostsPresenter
 import com.example.gleb.mediumme.view.IListPostsView
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
-class PostFragment: BaseFragment(), IListPostsView {
+class PostListFragment : BaseFragment(), IListPostsView {
     val LOG_TAG = this.javaClass.canonicalName
     val presenter: IListPostsPresenter = ListPostsPresenter(this)
     var postList: RecyclerView? = null
@@ -30,6 +36,9 @@ class PostFragment: BaseFragment(), IListPostsView {
     var addButton: FloatingActionButton? = null
     var coordinateLayout: CoordinatorLayout? = null
     var listEntities: List<PostEntityResponse>? = null
+    var notificationHelper: NotificationHelper? = null
+    var nm: NotificationManager? = null
+    var stringHelper: StringHelper? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         var v: View = inflater!!.inflate(R.layout.fragment_post_list, container, false)
@@ -38,6 +47,8 @@ class PostFragment: BaseFragment(), IListPostsView {
         presenter.listPosts("10")
         return v
     }
+
+    val initNotificationIntent = { Intent(activity, MainActivity::class.java)}
 
     override fun initWidgets(v: View) {
         var context = activity
@@ -60,13 +71,21 @@ class PostFragment: BaseFragment(), IListPostsView {
         addButton!!.setOnClickListener { i -> Snackbar.make(coordinateLayout, R.string.write_post, Snackbar.LENGTH_LONG).show() }
         val recyclerViewOnItemClickListener = RecyclerViewOnItemClickListener(context, this)
         postList!!.addOnItemTouchListener(recyclerViewOnItemClickListener)
+        notificationHelper = NotificationHelper.instance
+        nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        stringHelper = StringHelper.instance
     }
 
     override fun displayListPosts(list: List<PostEntityResponse>) {
+        var context = activity
         listEntities = list
         adapter = ListPostsAdapter(list, context)
         postList!!.adapter = adapter
         EventBus().register(this)
+
+        var title = stringHelper!!.getString(R.string.notification_new_post, context, 10.toString())
+
+        notificationHelper!!.buildNotification(nm!!, context, title, "Text", initNotificationIntent)
     }
 
     fun openItemPost(entity: PostEntityResponse) {

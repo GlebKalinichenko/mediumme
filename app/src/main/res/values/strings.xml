@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">mediumme</string>
     <string name="write_post">Write post</string>
+    <string name="test_post_content">In this Part we are going to configure an Android Studio project to use Kotlin and left everything prepared for the next story to start developing the Keddit App from the beginning and learning some Kotlin concepts.
+If you missed the first part of this Stories you can go to the Introduction just to get a quick overview of what we are going to be developing, which Kotlin topics are going to be covered and also which libraries are going to be used. </string>
+    <string name="notification_new_post">Received new %1$s posts</string>
 </resources>

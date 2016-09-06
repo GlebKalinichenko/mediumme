@@ -43,4 +43,56 @@
         <item name="android:layout_marginRight">@dimen/margin_right_text_title</item> />
     </style>
 
+
+
+    <style name="PostItemDetailsFragment"/>
+
+    <style name="PostItemDetailsFragment.FitSystemWindow">
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.FitSystemWindow.AppBarLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/height_app_bar_layout</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.FitSystemWindow.CollapsingToolBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.FitSystemWindow.PostImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:src">@drawable/image</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.ToolBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.PostTextContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.PostText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_post</item>
+        <item name="android:lineSpacingExtra">@dimen/space_between_lines</item>
+        <item name="android:text">@string/test_post_content</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.LikeButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/activity_horizontal_margin</item>
+        <item name="android:src">@mipmap/ic_like</item>
+    </style>
+
+
 </resources>

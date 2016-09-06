@@ -10,4 +10,11 @@
     <dimen name="margin_right_text_title">10dp</dimen>
     <dimen name="margin_top_text_title">3dp</dimen>
 
+    <!--Post item details fragment-->
+    <dimen name="height_app_bar_layout">300dp</dimen>
+    <dimen name="margin_start_title">48dp</dimen>
+    <dimen name="margin_end_title">64dp</dimen>
+    <dimen name="text_size_post">20sp</dimen>
+    <dimen name="space_between_lines">8dp</dimen>
+
 </resources>

@@ -18,7 +18,11 @@ class StringHelper private constructor() {
         val instance: StringHelper by lazy { HOLDER.INSTANCE }
     }
 
-    fun getString(resId: Int, context: Context){
-        context.getString(resId)
+    fun getString(resId: Int, context: Context): String{
+        return context.getString(resId)
+    }
+
+    fun getString(resId: Int, context: Context, values: String): String{
+        return context.getString(resId, values)
     }
 }
