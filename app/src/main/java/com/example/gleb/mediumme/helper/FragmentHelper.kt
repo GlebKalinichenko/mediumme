@@ -9,12 +9,13 @@ class FragmentHelper {
     val LOG_TAG: String = this.javaClass.canonicalName
 
     companion object {
-        fun loadFragment(context: FragmentActivity, resId: Int, fragment: BaseFragment){
+        fun <T : Fragment> loadFragment(context: FragmentActivity, resId: Int, fragment: T){
             context.supportFragmentManager.beginTransaction().add(resId, fragment).addToBackStack(null).commit()
         }
 
         fun <T : Fragment> reloadFragment(context: FragmentActivity, resId: Int, fragment: T){
-            context.supportFragmentManager.beginTransaction().replace(resId, fragment).commit()
+            val fm = context.supportFragmentManager
+            fm.beginTransaction().replace(resId, fragment).addToBackStack(null).commit()
         }
     }
 

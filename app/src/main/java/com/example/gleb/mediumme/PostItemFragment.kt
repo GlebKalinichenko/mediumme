@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 
 class PostItemFragment: BaseFragment(), IPostDetailsView {
     val LOG_TAG = this.javaClass.canonicalName
-    var postImageView: ImageView? = null
+    var postImageView: ImageView? = nullsma
     var entity: PostEntityResponse? = null
 
     companion object {

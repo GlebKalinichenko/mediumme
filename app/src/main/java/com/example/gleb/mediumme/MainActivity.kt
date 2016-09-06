@@ -18,4 +18,9 @@ class MainActivity : AppCompatActivity() {
         var fragment: BaseFragment = PostListFragment()
         FragmentHelper.loadFragment(this, R.id.layout_container, fragment)
     }
+
+//    override fun onBackPressed() {
+//        if (supportFragmentManager.backStackEntryCount > 0) supportFragmentManager.popBackStack()
+//        else super.onBackPressed()
+//    }
 }
