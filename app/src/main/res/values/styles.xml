@@ -13,7 +13,6 @@
     <style name="PostItemFragment.PostImage">
         <item name="android:layout_width">@dimen/size_image_post</item>
         <item name="android:layout_height">@dimen/size_image_post</item>
-        <item name="android:src">@drawable/image</item>
         <item name="android:layout_marginLeft">@dimen/margin_image_post</item>
         <item name="android:layout_marginBottom">@dimen/margin_image_post</item>
         <item name="android:layout_marginTop">@dimen/margin_image_post</item>
@@ -65,7 +64,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="android:src">@drawable/image</item>
     </style>
 
     <style name="PostItemDetailsFragment.ToolBar">
@@ -92,6 +90,16 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/activity_horizontal_margin</item>
         <item name="android:src">@mipmap/ic_like</item>
+    </style>
+
+    <style name="PostItemDetailsFragment.TitleComment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_title_comment</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PostItemFragment.PostImage.TitleComment">
+        <item name="android:src">@drawable/common_full_open_on_phone</item>
     </style>
 
 

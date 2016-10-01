@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/layout_comment"
+    android:layout_width="match_parent"
+    android:layout_height="340dp"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="80dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            style="@style/PostItemFragment.PostImage.TitleComment"
+            app:civ_border_width="@dimen/border_width_image_post"
+            app:civ_border_color="@color/colorAccent"
+            android:background="@color/colorAccent"/>
+
+        <TextView
+            android:text="@string/post_comments"
+            android:textColor="@android:color/white"
+            style="@style/PostItemDetailsFragment.TitleComment"/>
+    
+    </LinearLayout>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Text"
+        android:background="@android:color/white" />
 </LinearLayout>

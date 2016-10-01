@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -16,7 +17,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.LinearLayout
 import com.example.gleb.mediumme.entities.PostEntityResponse
 import com.example.gleb.mediumme.event.ImageClickedEvent
 import com.example.gleb.mediumme.helper.FragmentHelper
@@ -62,13 +63,12 @@ class PostListFragment : BaseFragment(), IListPostsView {
 
         initWidgetActions()
 
-        //postList!!.setHasFixedSize(true)
-        //postList!!.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        postList!!.setHasFixedSize(true)
+        postList!!.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
     }
 
     override fun initWidgetActions() {
         val context = activity
-        addButton!!.setOnClickListener { i -> Snackbar.make(coordinateLayout, R.string.write_post, Snackbar.LENGTH_LONG).show() }
         val recyclerViewOnItemClickListener = RecyclerViewOnItemClickListener(context, this)
         postList!!.addOnItemTouchListener(recyclerViewOnItemClickListener)
         notificationHelper = NotificationHelper.instance
