@@ -17,5 +17,7 @@
     <dimen name="text_size_post">20sp</dimen>
     <dimen name="space_between_lines">8dp</dimen>
     <dimen name="height_title_comment">80dp</dimen>
+    <dimen name="height_collapsed_bar_layout">250dp</dimen>
+    <dimen name="max_height_collapsed_bar_layout">340dp</dimen>
 
 </resources>

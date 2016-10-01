@@ -4,9 +4,9 @@
     android:orientation="vertical"
     android:id="@+id/layout_comment"
     android:layout_width="match_parent"
-    android:layout_height="340dp"
+    android:layout_height="@dimen/max_height_collapsed_bar_layout"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="80dp"
+    app:behavior_peekHeight="@dimen/height_title_comment"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
     <LinearLayout
