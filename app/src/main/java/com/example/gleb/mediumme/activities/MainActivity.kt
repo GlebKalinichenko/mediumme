@@ -1,7 +1,10 @@
-package com.example.gleb.mediumme
+package com.example.gleb.mediumme.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.gleb.mediumme.fragments.PostListFragment
+import com.example.gleb.mediumme.R
+import com.example.gleb.mediumme.fragments.BaseFragment
 import com.example.gleb.mediumme.helper.FragmentHelper
 import org.greenrobot.eventbus.EventBus
 

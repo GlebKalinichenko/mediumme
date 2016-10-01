@@ -1,4 +1,4 @@
-package com.example.gleb.mediumme
+package com.example.gleb.mediumme.fragments
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import com.example.gleb.mediumme.PostListBottomSheetCallback
+import com.example.gleb.mediumme.R
 import com.example.gleb.mediumme.entities.PostEntityResponse
+import com.example.gleb.mediumme.fragments.BaseFragment
 import com.example.gleb.mediumme.presenter.IPostDetailsPresenter
 import com.example.gleb.mediumme.presenter.PostDetailsPresenter
 import com.example.gleb.mediumme.view.IPostDetailsView
@@ -29,7 +32,7 @@ class PostItemFragment: BaseFragment(), IPostDetailsView {
     companion object {
         val POST_ITEM_FRAGMENT_ENTITY = "PostItemFragmentEntity"
 
-        fun getInstance(entity: PostEntityResponse): PostItemFragment{
+        fun getInstance(entity: PostEntityResponse): PostItemFragment {
             var bundle: Bundle = Bundle()
             bundle.putSerializable(POST_ITEM_FRAGMENT_ENTITY, entity)
 

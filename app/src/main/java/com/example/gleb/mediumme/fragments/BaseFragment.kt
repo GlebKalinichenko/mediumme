@@ -1,4 +1,4 @@
-package com.example.gleb.mediumme
+package com.example.gleb.mediumme.fragments
 
 import android.support.v4.app.Fragment
 

@@ -102,5 +102,9 @@
         <item name="android:src">@drawable/common_full_open_on_phone</item>
     </style>
 
+    <style name="PostItemDetailsFragment.CollapsedBarLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_collapsed_bar_layout</item>
+    </style>
 
 </resources>
