@@ -3,7 +3,7 @@ package com.example.gleb.mediumme.helper
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.util.Log
-import com.example.gleb.mediumme.BaseFragment
+import com.example.gleb.mediumme.fragments.BaseFragment
 
 class FragmentHelper {
     val LOG_TAG: String = this.javaClass.canonicalName

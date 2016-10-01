@@ -1,4 +1,4 @@
-package com.example.gleb.mediumme
+package com.example.gleb.mediumme.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.gleb.mediumme.R
 import com.example.gleb.mediumme.entities.PostEntityResponse
 import com.squareup.picasso.Picasso
 import org.greenrobot.eventbus.EventBus

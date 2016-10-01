@@ -1,5 +1,6 @@
-package com.example.gleb.mediumme
+package com.example.gleb.mediumme.utils
 
+import android.R
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Canvas
@@ -11,7 +12,7 @@ import android.view.View
 
 class DividerItemDecoration (context: Context, orientation: Int) : RecyclerView.ItemDecoration() {
     companion object {
-        val ATTRS: IntArray = intArrayOf(android.R.attr.listDivider)
+        val ATTRS: IntArray = intArrayOf(R.attr.listDivider)
         val HORIZONTAL_LIST = LinearLayoutManager.HORIZONTAL
         val VERTICAL_LIST = LinearLayoutManager.VERTICAL
 

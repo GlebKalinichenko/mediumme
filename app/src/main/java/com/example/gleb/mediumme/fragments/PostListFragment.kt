@@ -1,4 +1,4 @@
-package com.example.gleb.mediumme
+package com.example.gleb.mediumme.fragments
 
 import android.app.Notification
 import android.app.NotificationManager
@@ -18,8 +18,15 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.example.gleb.mediumme.utils.DividerItemDecoration
+import com.example.gleb.mediumme.R
+import com.example.gleb.mediumme.RecyclerViewOnItemClickListener
+import com.example.gleb.mediumme.activities.MainActivity
+import com.example.gleb.mediumme.adapters.ListPostsAdapter
 import com.example.gleb.mediumme.entities.PostEntityResponse
 import com.example.gleb.mediumme.event.ImageClickedEvent
+import com.example.gleb.mediumme.fragments.BaseFragment
+import com.example.gleb.mediumme.fragments.PostItemFragment
 import com.example.gleb.mediumme.helper.FragmentHelper
 import com.example.gleb.mediumme.helper.NotificationHelper
 import com.example.gleb.mediumme.helper.StringHelper
@@ -49,7 +56,7 @@ class PostListFragment : BaseFragment(), IListPostsView {
         return v
     }
 
-    val initNotificationIntent = { Intent(activity, MainActivity::class.java)}
+    val initNotificationIntent = { Intent(activity, MainActivity::class.java) }
 
     override fun initWidgets(v: View) {
         var context = activity
